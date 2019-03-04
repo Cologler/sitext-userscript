@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Sitext: open.spotify.com
 // @namespace           https://github.com/Cologler/
-// @version             0.1
+// @version             0.2
 // @description         try to take over the world!
 // @author              Cologler (skyoflw@gmail.com)
 // @match               https://open.spotify.com/*
@@ -29,5 +29,10 @@
         const album = document.querySelector('.mo-info-name').textContent;
         const fileName = `${artist} - ${album}.jpg`;
         GM_download(bgiurl, fileName);
+    });
+
+    GM_registerMenuCommand('log tracks name', () => {
+        const tracks = Array.from(document.querySelectorAll('.tracklist-name')).map(z => z.textContent);
+        console.log(tracks);
     });
 })();
